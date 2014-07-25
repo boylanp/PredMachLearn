@@ -4,7 +4,7 @@ The goal of this assignment is to predict the type of exercize performed based o
 
 ## Data Exploration
 First the data is read in and the training group is broken apart further into training (60%) and testing (40%) groups.
-
+ 
 ```{r}
 #To get reproducable results everytime 
 set.seed(85)
