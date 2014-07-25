@@ -223,7 +223,7 @@ train1 &lt;- train1[, -which(names(train1) %in% nzv1)]
 
 <h2>Creating the model</h2>
 
-<p>This table shows the results from using the train1 subset of the training data.  The error rate of the model on the training data is 0.9XXXXX</p>
+<p>This table shows the results from using the train1 subset of the training data.  The error rate of the model on the training data is 0.0031 or <b>0.3%</b></p>
 
 <pre><code class="r">modFit &lt;- train(classe ~ ., data = train1, method = &quot;rf&quot;, importance = TRUE)
 </code></pre>
@@ -246,7 +246,7 @@ train1 &lt;- train1[, -which(names(train1) %in% nzv1)]
 
 <h2>Cross Validation</h2>
 
-<p>The validation portion of the training data is used to determine the accuracy of the model.  The <b>accuracy is 0.9XXX</b> and the <b>out of sample error is 0.XXXX</b>.  We expected the out of sample error to be low, largely due to the large number of observations and features for the model to use.    </p>
+<p>The validation portion of the training data is used to determine the accuracy of the model.  The <b>accuracy is 99.6%</b> and the <b>out of sample error is 0.004 or 0.4%</b>.  This is simliar to our expected value of 0.3% from above.  We expected the out of sample error to be low, largely due to the large number of observations and features for the model to use.    </p>
 
 <pre><code class="r">confusionMatrix(predict(modFit, newdata = test1), test1$classe)
 </code></pre>
