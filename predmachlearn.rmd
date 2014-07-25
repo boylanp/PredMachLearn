@@ -38,14 +38,14 @@ train1 <- train1[, -which(names(train1) %in% nzv1)]
 ```
 
 ## Creating the model
-This table shows the results from using the train1 subset of the training data.  The error rate of the model on the training data is 0.9XXXXX
+This table shows the results from using the train1 subset of the training data.  The error rate of the model on the training data is 0.0031 or <b>0.3%</b>
 ```{r}
 modFit <- train(classe ~ ., data = train1, method = "rf", importance=TRUE)
 modFit$finalModel$confusion
 ```
 
 ## Cross Validation
-The validation portion of the training data is used to determine the accuracy of the model.  The <b>accuracy is 0.9XXX</b> and the <b>out of sample error is 0.XXXX</b>.  We expected the out of sample error to be low, largely due to the large number of observations and features for the model to use.    
+The validation portion of the training data is used to determine the accuracy of the model.  The <b>accuracy is 99.6%</b> and the <b>out of sample error is 0.004 or 0.4%</b>. This is similar to our expected value of 0.3% from above. We expected the out of sample error to be low, largely due to the large number of observations and features for the model to use.    
 ```{r}
 confusionMatrix(predict(modFit,newdata=test1), test1$classe)
 ```
