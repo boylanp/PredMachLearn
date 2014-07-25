@@ -22,7 +22,7 @@ testing <- read.csv("pml-testing.csv")
 
 # Separate test data into two groups
 training <- training[, -c(1, 3:5)]  #First column is redundant, remove noisy time data
-inTrain <- createDataPartition(y = training$classe, p = 0.2, list = FALSE)
+inTrain <- createDataPartition(y = training$classe, p = 0.02, list = FALSE)
 train1 <- training[inTrain, ]
 test1 <- training[-inTrain, ]
 ```
@@ -61,12 +61,12 @@ modFit$finalModel$confusion
 ```
 
 ```
-##      A   B   C   D   E class.error
-## A 1115   1   0   0   0   0.0008961
-## B   11 739   9   1   0   0.0276316
-## C    0  11 672   1   1   0.0189781
-## D    0   1  10 632   1   0.0186335
-## E    0   1   2   7 712   0.0138504
+##     A  B  C  D  E class.error
+## A 104  3  3  2  0     0.07143
+## B  10 57  7  1  1     0.25000
+## C   2  2 60  4  1     0.13043
+## D   3  1  6 53  2     0.18462
+## E   0  7  5  3 58     0.20548
 ```
 
 
@@ -82,33 +82,33 @@ confusionMatrix(predict(modFit, newdata = test1), test1$classe)
 ## 
 ##           Reference
 ## Prediction    A    B    C    D    E
-##          A 4462   55    4    0    0
-##          B    1 2944   31    1   10
-##          C    0   37 2699   22    5
-##          D    0    1    3 2549   28
-##          E    1    0    0    0 2842
+##          A 5084  355   89   83   43
+##          B  200 2839  323   93  315
+##          C   42  393 2865  469  178
+##          D  129  123   64 2349  136
+##          E   13   11   12  157 2862
 ## 
 ## Overall Statistics
 ##                                         
-##                Accuracy : 0.987         
-##                  95% CI : (0.985, 0.989)
+##                Accuracy : 0.832         
+##                  95% CI : (0.827, 0.837)
 ##     No Information Rate : 0.284         
 ##     P-Value [Acc > NIR] : <2e-16        
 ##                                         
-##                   Kappa : 0.984         
-##  Mcnemar's Test P-Value : NA            
+##                   Kappa : 0.787         
+##  Mcnemar's Test P-Value : <2e-16        
 ## 
 ## Statistics by Class:
 ## 
 ##                      Class: A Class: B Class: C Class: D Class: E
-## Sensitivity             1.000    0.969    0.986    0.991    0.985
-## Specificity             0.995    0.997    0.995    0.998    1.000
-## Pos Pred Value          0.987    0.986    0.977    0.988    1.000
-## Neg Pred Value          1.000    0.993    0.997    0.998    0.997
+## Sensitivity             0.930    0.763    0.854    0.745    0.810
+## Specificity             0.959    0.940    0.932    0.972    0.988
+## Pos Pred Value          0.899    0.753    0.726    0.839    0.937
+## Neg Pred Value          0.972    0.943    0.968    0.951    0.958
 ## Prevalence              0.284    0.194    0.174    0.164    0.184
-## Detection Rate          0.284    0.188    0.172    0.162    0.181
-## Detection Prevalence    0.288    0.190    0.176    0.164    0.181
-## Balanced Accuracy       0.997    0.983    0.991    0.994    0.993
+## Detection Rate          0.264    0.148    0.149    0.122    0.149
+## Detection Prevalence    0.294    0.196    0.205    0.146    0.159
+## Balanced Accuracy       0.944    0.851    0.893    0.859    0.899
 ```
 
 
@@ -121,7 +121,7 @@ answers
 ```
 
 ```
-##  [1] B A A A A E D B A A B C B A E E A B B B
+##  [1] A A B A A E D B A A C C B A E B A B A B
 ## Levels: A B C D E
 ```
 

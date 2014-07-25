@@ -21,7 +21,7 @@ testing <- read.csv("pml-testing.csv")
 
 #Separate test data into two groups
 training <- training[, -c(1,3:5)] #First column is redundant, remove noisy time data
-inTrain <- createDataPartition(y = training$classe, p = 0.20, list = FALSE)
+inTrain <- createDataPartition(y = training$classe, p = 0.020, list = FALSE)
 train1 <- training[inTrain,]
 test1 <- training[-inTrain,]
 ```
